@@ -1,0 +1,17 @@
+pipeline{
+    agent any 
+    stages{
+        stage("packerWork"){
+            steps{
+                script{
+                        sh '''
+                         DIR=$(pwd)
+                         sudo -S cp -r /home/ec2-user/packer $DIR/
+                         ls
+                         ./packer build sample.json
+                        '''
+                }
+            }
+        }
+    }
+}
