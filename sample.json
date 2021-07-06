@@ -5,7 +5,7 @@
     "builders": [
         {
         "type": "amazon-ebs",
-        "region": "eu-central-1",
+        "region": "af-south-1",
         "ami_name": "{{user `Name`}}",
         "source_ami": "ami-089b5384aac360007",
         "instance_type": "t2.micro",
