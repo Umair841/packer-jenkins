@@ -9,6 +9,16 @@ parameters {
                     defaultValue: 'Hardened-AMI',
                     description: 'please provide Name for baked AMI'
                 )
+        string(
+                    name: 'BaseAmi',
+                    defaultValue: 'ami-089b5384aac360007',
+                    description: 'please provide Base image AMI id'
+                )
+         string(
+                    name: 'Region',
+                    defaultValue: 'eu-central-1',
+                    description: 'please provide region in which Your Base AMI exist'
+                )
 }
     stages{
         stage("packerWork"){
@@ -25,7 +35,7 @@ parameters {
                               sudo -S cp -r /home/ec2-user/packer $DIR/
                          fi
                            echo "lets bake AMI"
-                         ./packer build  -var "Name=$AMIname" sample.json
+                         ./packer build  -var "Name=$AMIname" -var "region=$Region" -var "BaseAmi=$BaseAmi" sample.json
                         '''
                 }
             }
