@@ -1,7 +1,7 @@
 {
     "variables": {
-        "Name": ""  
-        "region": ""
+        "Name": "",
+        "region": "",
         "BaseAmi": ""
     },    
     "builders": [
