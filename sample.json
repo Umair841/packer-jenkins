@@ -1,13 +1,15 @@
 {
     "variables": {
-        "Name": ""    
+        "Name": ""  
+        "region": ""
+        "BaseAmi": ""
     },    
     "builders": [
         {
         "type": "amazon-ebs",
-        "region": "eu-west-1",
+        "region": "{{user `region`}}",
         "ami_name": "{{user `Name`}}",
-        "source_ami": "ami-089b5384aac360007",
+        "source_ami": "{{user `BaseAmi`}}",
         "instance_type": "t2.micro",
         "ssh_username": "ec2-user",
         "security_group_ids": ["sg-006f8cc5695538050"]
