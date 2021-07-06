@@ -33,6 +33,7 @@ chmod -R u-s /usr/sbin/pam_timestamp_check
 chmod -R u-s /usr/sbin/unix_chkpwd
 chmod -R u-s /usr/sbin/userhelper
 chmod -R u-s /usr/sbin/usernetctl
+sudo chmod -R u-s /usr/bin/staprun
 
 chmod -R u-s /home/ec2-user/install.sh
 chmod -R u-s /home/ec2-user/boot.sh
