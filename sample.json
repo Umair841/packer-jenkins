@@ -1,0 +1,66 @@
+{
+    "builders": [
+        {
+        "type": "amazon-ebs",
+        "region": "eu-central-1",
+        "ami_name": "hardened-Ami-v002",
+        "source_ami": "ami-089b5384aac360007",
+        "instance_type": "t2.micro",
+        "ssh_username": "ec2-user",
+        "security_group_ids": ["sg-006f8cc5695538050"]
+       }
+    ],
+    "provisioners":[
+            {
+                "type":           "file",
+                "source":         "/var/lib/jenkins/workspace/packer-build/boot.sh",
+                "destination":    "/home/ec2-user/"
+            },
+            {
+                    "type":     "shell",
+                    "inline":   ["chmod 777 boot.sh","sudo mv ./boot.sh /home"]
+    
+            },
+            {
+                "type":           "file",
+                "source":         "/var/lib/jenkins/workspace/packer-build/boot.sh",
+                "destination":    "/home/ec2-user/"
+            },
+            {
+                    "type":     "shell",
+                    "inline":   ["chmod 777 boot.sh","sudo cp -r boot.sh /bin/"]
+    
+            },
+            {
+                "type":           "file",
+                "source":         "/var/lib/jenkins/workspace/packer-build/tenent.sh",
+                "destination":    "/home/ec2-user/"
+            },
+            {
+                    "type":     "shell",
+                    "inline":   ["chmod 777 /home/ec2-user/tenent.sh"]
+
+            },
+            {
+                "type":           "file",
+                "source":         "/var/lib/jenkins/workspace/packer-build/install.sh",
+                "destination":    "/home/ec2-user/"
+            },
+            {
+                    "type":     "shell",
+                    "inline":   ["chmod 777 /home/ec2-user/install.sh","sudo /home/ec2-user/install.sh"]
+
+            },
+            {
+                "type":           "file",
+                "source":         "/var/lib/jenkins/workspace/packer-build/script.sh",
+                "destination":    "/home/ec2-user/"
+            },
+            {
+                    "type":     "shell",
+                    "inline":   ["chmod 777 /home/ec2-user/script.sh","sudo /home/ec2-user/script.sh"]
+            }
+            
+        
+        ]
+}
