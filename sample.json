@@ -1,9 +1,12 @@
 {
+    "variables": {
+        "Name": ""    
+    },    
     "builders": [
         {
         "type": "amazon-ebs",
         "region": "eu-central-1",
-        "ami_name": "Hardened-AMI",
+        "ami_name": "{{user `Name`}}",
         "source_ami": "ami-089b5384aac360007",
         "instance_type": "t2.micro",
         "ssh_username": "ec2-user",
