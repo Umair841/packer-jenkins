@@ -3,13 +3,6 @@ pipeline{
     options { 
      disableConcurrentBuilds() 
   }
- parameters {
-        string(
-                    name: 'FinalName',
-                    defaultValue: 'Hardened-AMI',
-                    description: 'please provide name for baked AMI'
-                )
- }
     stages{
         stage("packerWork"){
             steps{
